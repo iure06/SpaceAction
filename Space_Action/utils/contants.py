@@ -5,7 +5,7 @@ import pygame
 # Global Constants
 TITLE = 'Space Action'
 SCREEN_HEIGHT = 600
-SCREEN_WIDTH = 1100
+SCREEN_WIDTH = 1200
 FPS = 30
 WAY = os.path.join(os.path.dirname(__file__), "..","assets")
 

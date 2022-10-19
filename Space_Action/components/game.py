@@ -1,6 +1,10 @@
+from sys import exit
+from time import sleep
+
 import pygame
-from Space_Action.utils.contants import (BG, FONT_STYLE, FPS, SCREEN_HEIGHT,
-                                         SCREEN_WIDTH, TITLE)
+from Space_Action.components.ship import Ship
+from Space_Action.utils.contants import (BG, FONT_STYLE, FPS, HEART,
+                                         SCREEN_HEIGHT, SCREEN_WIDTH, TITLE)
 
 
 class Game:
@@ -12,10 +16,12 @@ class Game:
         self.playing = False
         self.running = False
         self.game_speed = 10
-        self.x_pos_bg = 0
-        self.y_pos_bg = 380
+        self.x_pos_bg = -50
+        self.y_pos_bg = 0
         self.score = 0
         self.life = 5
+
+        self.player = Ship()
 
     def execute(self):
         self.running = True
@@ -41,17 +47,28 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
+        self.player.update(user_input)
+        self.update_score()
+        self.update_life()
+
+    def update_score(self):
+        self.text_format(f"Score: {self.score}", 1100, 30,20, "#FF0000")
+
+    def update_life(self):
+        posicion = 20
+        for life in range(0 , self.life):
+            self.screen.blit(HEART,(posicion, self.y_pos_bg + 10))
+            posicion += 40
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill("#FFFFFF")
-        self.draw_bg()
+        self.screen.blit(BG,(self.x_pos_bg,self.y_pos_bg))
+        self.update_score()
+        self.update_life()
+        self.player.draw(self.screen)
 
         pygame.display.update()
-        pygame.display.flip()
-
-    def draw_bg(self):
-        pass
+        pygame.display.flip() 
 
     def show_menu(self):
         self.screen.fill("#FFFFFF")
@@ -59,6 +76,8 @@ class Game:
             self.text_format('Press any key to start', SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         elif self.life == 0:
             self.text_format('Gamer Over', SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 50)
+            sleep(2)
+            exit()
         
         pygame.display.update()
         self.handle_events_on_menu()
