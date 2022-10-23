@@ -12,9 +12,9 @@ class Obstacle_manage:
             obstacleDraw = randint(0,1)
 
             if obstacleDraw == 0:
-                self.obstacles.append(Planet(game.score))
+                self.obstacles.append(Planet(game))
             elif obstacleDraw == 1:
-                self.obstacles.append(Meteor(game.score))
+                self.obstacles.append(Meteor(game))
 
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)

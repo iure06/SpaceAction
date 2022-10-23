@@ -87,6 +87,8 @@ class Game:
             self.text_format('Press any key to start', SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
         elif self.life == 0:
             self.text_format('Gamer Over', SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 50)
+            self.text_format('Press any key to start', SCREEN_WIDTH / 2, SCREEN_HEIGHT - 50 / 2)
+            
         
         pygame.display.update()
         self.handle_events_on_menu()
@@ -97,6 +99,8 @@ class Game:
                 self.running = False
                 self.playing = False
             elif event.type == pygame.KEYDOWN:
+                self.life = 5
+                self.score = 0
                 self.play_music()
                 self.run()
 

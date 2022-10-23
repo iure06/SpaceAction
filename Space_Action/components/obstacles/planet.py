@@ -4,8 +4,7 @@ from random import randint
 
 
 class Planet(Obstacle):
-    def __init__(self,score):
+    def __init__(self,game):
         self.image = PLANET
         self.type = randint(0 , 13)
-        self.score = score
-        super().__init__(self.image,self.type ,self.score)
+        super().__init__(self.image,self.type,game)
