@@ -37,16 +37,16 @@ class Ship(Sprite):
 
     def ship_up(self):
         if self.ship_rect.y >  0:
-            self.ship_rect.y -= 5
+            self.ship_rect.y -= 10
         self.shipUp = False
 
     def ship_down(self):
         if self.ship_rect.y < 390:
-            self.ship_rect.y += 5
+            self.ship_rect.y += 10
         self.shipDown = False
 
     def ship_shot(self):
-        pass
+        self.shipShot = False
 
     def draw(self,screen):
         screen.blit(self.image, (self.ship_rect.x, self.ship_rect.y))

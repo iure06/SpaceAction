@@ -2,6 +2,7 @@ import os
 
 import pygame
 
+pygame.mixer.init()
 # Global Constants
 TITLE = 'Space Action'
 SCREEN_HEIGHT = 600
@@ -51,7 +52,7 @@ BOMB = pygame.image.load(os.path.join(WAY, "weapons/bomb.png"))
 LEISURE_SHOOTING = pygame.image.load(os.path.join(WAY, "weapons/leisureShooting.png"))
 
 # Assets Constants music and songs
-SOUNDTRACK = os.path.join(WAY, "others/(ainda em espera)")
+SOUNDTRACK = os.path.join(WAY, "others/SoundTrack.mp3")
 
 # Assets Constants font
 FONT_STYLE = os.path.join(WAY, "others/Silkscreen-Regular.ttf")
